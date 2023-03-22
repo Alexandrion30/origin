@@ -144,10 +144,9 @@ func handleCommand(command string) {
 	case "надеть":
 		game.PutOn(items)
 	case "взять":
-		game.AddBackpack(items)
+		game.AddInBackpack(items)
 	case "применить":
 		game.ApplyItem(items, addItems)
-
 	default:
 		fmt.Println("неизвестная команда")
 		return
@@ -234,10 +233,10 @@ func (game *Game) PutOn(item string) {
 	fmt.Println("ошибка")
 }
 
-func (game *Game) AddBackpack(item string) {
+func (game *Game) AddInBackpack(item string) {
 
 	room := game.User.SelectedRoom
-	itemsFromRoom := game.Rooms[room].Items[0].Items
+	itemsFromRoom := game.Rooms[room].Items[0].Items // через цикл for
 	avBackpack := game.User.AvBackpack
 
 	if avBackpack == false {
